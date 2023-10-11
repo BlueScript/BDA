@@ -1,11 +1,16 @@
-from xmlrpc.server import SimpleXMLRPCServer
+import xmlrpc.server
+import os
+f = open('client_text.txt','a')
 
-filec = len(open("data.txt").read().split(" "))
+def upload_file(file_contents):
+    f.write(
 
-def add(num):
-    return num + filec
+    
 
-if __name__ == '__main__':
-    s = SimpleXMLRPCServer(('192.168.108.204',8080))
-    s.register_function(add)
-    s.serve_forever()
+def Hello(str):
+    print(str)
+server = xmlrpc.server.SimpleXMLRPCServer(("192.168.108.18", 8000))
+server.register_function(Hello,"Hello")
+server.register_function(upload_file, "upload_file")
+print("Server listening on port 8000")
+server.serve_forever()

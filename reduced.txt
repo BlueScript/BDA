@@ -1,0 +1,7 @@
+afternoon	1
+day	1
+evening	1
+fahad	1
+good	6
+morning	1
+night	1

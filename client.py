@@ -1,17 +1,28 @@
-from xmlrpc.client import ServerProxy
+import xmlrpc.client
+import sys
+import re
+import os
+proxy = xmlrpc.client.ServerProxy("http://192.168.108.41:8000/")
+file1 = 'data.txt'
 
-filec = len(open("data.txt").read().split(" "))
-count1 =0
-count2 =0
+os.system("type data.txt | python map.py | sort | python reduce.py ")
+for line in sys.stdin:
+    line = re.sub(r'\W+',' ',line.strip())
+    words= line.split()
+    for word in words:
+        proxy.upload_file(word)
 
-if __name__ == '__main__':
-    s = ServerProxy("http://192.168.108.205:8080")
-    count1 = s.add(filec)
 
-    a = ServerProxy("http://192.168.108.206:8080")
-    count2 = a.add(count1)
 
-    print(count1)
 
-    print(count2)
+
+
+
+
+
+    
+
+
+
+
     

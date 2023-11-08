@@ -7,6 +7,6 @@ for line in sys.stdin:
     sum += int(words[1])
     count +=1
 
-print("average salary: ",sum/count)
+print("sum salary: ",sum)
     
 
